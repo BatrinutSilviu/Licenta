@@ -1,0 +1,20 @@
+spate=unde vine cablu rs232
+switch spre interior=inchis
+
+16-glezna st
+17-jenunt st
+18-sold st
+
+0-glezna dr
+1-jenunt dr
+2-sold dr
+
+#18 2250 sta drept !!
+#2  750 sta drept  !!
+
+#0 2250 spre interior  ;1520 sta drept
+#16 750 spre interior
+
+#1 2250 spate 
+#17 750 spate
+
