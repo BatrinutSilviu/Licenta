@@ -9,7 +9,7 @@ switch spre interior=inchis
 1-jenunt dr
 2-sold dr
 
-#18 2250 sta drept !!
+#18 2250 sta drept !!  
 #2  750 sta drept  !!
 
 #0 2250 spre interior  ;1520 sta drept
@@ -17,4 +17,18 @@ switch spre interior=inchis
 
 #1 2250 spate 
 #17 750 spate
+
+
+
+remake
+
+#18 1550 mijloc  mai mic= spate   mai mare= fata
+#2  1500 mijloc  mai mic=fata     mai mare=spate
+
+#1  1550 mijloc  mai mic=spate    mai mare=fata
+#17 1350 mijloc  mai mic=fata	  mai mare=spate
+
+#0  1520 mijloc  mai mic=ridica ext  mai mare=ridica int
+#16 1475 mijloc  mai mic=ridica int  mai mare=ridica ext
+
 
