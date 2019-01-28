@@ -6,23 +6,18 @@ Serial.flush();
 pozInitial();
 delay(500);
 Serial.flush();
-miscatiHoitu();
-Serial.flush();
-sutDreptu();
-delay(1000);
-pozInitial();
 }
-
 void loop() {
-  
+  miscatiHoitu();
 }
 
 void miscatiHoitu()
 {
-  //sta tapan+ inclinare talpii
-  Serial.println("#0 P1645 T500");
+  //inclinare talpii
+  Serial.println("#0 P1620 T500");
   Serial.println("#16 P1575 T500");
   delay(500);
+  //primu pas
   Serial.println("#1 P1400 T500");
   Serial.println("#2 P1350 T500");
   Serial.println("#17 P1200 T500");
@@ -32,7 +27,7 @@ void miscatiHoitu()
   Serial.println("#16 P1475 T500");
   delay(1000);
   //al doilea pas
-  Serial.println("#0 P1420 T500");
+  Serial.println("#0 P1460 T500");  //1420
   Serial.println("#16 P1375 T500");
   delay(500);
   Serial.println("#1 P1700 T500");
