@@ -92,11 +92,11 @@ void turnStanga()
   Serial.println("#16 P1475 T500");
   Serial.println("#0 P1520 T500");
   
-  Serial.println("#18 P1750 T500");
-  Serial.println("#17 P1650 T500");
+  Serial.println("#18 P1750 T500");     //de aici putem intoarce mai mult sau mai putin,astea 4 comenzi
+  Serial.println("#17 P1650 T500");     
   
   Serial.println("#1 P1850 T500");
-  Serial.println("#2 P1800 T350");
+  Serial.println("#2 P1700 T350");
 }
 
 void PasDupaTurn()
