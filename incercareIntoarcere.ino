@@ -4,11 +4,11 @@ void setup() {
 Serial.begin(115200);
 Serial.flush();
 pozInitial();
-delay(500);
-Serial.flush();
-turnStanga();
 delay(1000);
-PasDupaTurn();
+Serial.flush();
+turnDreapta();
+delay(1000);
+PasDupaTurnDreapta();
 delay(1000);
 pozInitial();
 }
@@ -79,14 +79,13 @@ void turnDreapta()
 {
   Serial.println("#16 P1475 T500");
   Serial.println("#0 P1520 T500");
-
-  Serial.println("#18 P1250 T500");
-  Serial.println("#17 P1050 T500");
+  
+  Serial.println("#18 P1350 T500");     //de aici putem intoarce mai mult sau mai putin,astea 4 comenzi
+  Serial.println("#17 P1050 T500");     
   
   Serial.println("#1 P1250 T500");
   Serial.println("#2 P1200 T350");
 }
-
 void turnStanga()
 {
   Serial.println("#16 P1475 T500");
@@ -96,15 +95,15 @@ void turnStanga()
   Serial.println("#17 P1650 T500");     
   
   Serial.println("#1 P1850 T500");
-  Serial.println("#2 P1700 T350");
+  Serial.println("#2 P1800 T350");
 }
 
-void PasDupaTurn()
+void PasDupaTurnStanga()
 {
-    Serial.println("#0 P1620 T500");
+  Serial.println("#0 P1620 T500");
   Serial.println("#16 P1575 T500");
   delay(500);
-  //primu pas
+  
   Serial.println("#1 P1400 T500");
   Serial.println("#2 P1350 T500");
   Serial.println("#17 P1200 T500");
@@ -113,5 +112,20 @@ void PasDupaTurn()
   Serial.println("#0 P1520 T500");
   Serial.println("#16 P1475 T500");
   delay(1000);
-  
+}
+
+void PasDupaTurnDreapta()
+{
+  Serial.println("#0 P1420 T500");
+  Serial.println("#16 P1375 T500");
+  delay(500);
+
+  Serial.println("#1 P1700 T500");
+  Serial.println("#2 P1550 T500");
+  Serial.println("#17 P1500 T500");
+  Serial.println("#18 P1700 T500");
+  delay(1000);
+  Serial.println("#0 P1520 T500");
+  Serial.println("#16 P1475 T500");
+  delay(1000);
 }
