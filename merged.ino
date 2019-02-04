@@ -1,5 +1,6 @@
 #include <SPI.h>  
 #include <Pixy.h>
+#include <LiquidCrystal.h>
 
 #define TimpMediu "T500"
 
@@ -8,41 +9,39 @@ Pixy pixy;
 void setup() 
 {
   Serial.begin(115200);
-  Serial.println("Starting Pixy...");
   pixy.init();
   Serial.flush();
   pozInitial();
-
+  delay(1000);
   Serial.flush();
 }
 
 void loop() 
 {
-  static int i = 0;
-  int j;
+  static int blockFrameCounter = 0;
+  static int noBlockFrameCounter = 0;
+  int blockIterator;
   uint16_t blocks;
   char buf[32]; 
   
   // grab blocks!
   blocks = pixy.getBlocks();
-  
   // If there are detect blocks, print them!
   if (blocks)
   {
-    i++;
-    
+    blockFrameCounter++;
+    noBlockFrameCounter=0;
     // do this (print) every 50 frames because printing every
     // frame would bog down the Arduino
-    if (i%50==0)
+    if (blockFrameCounter % 50 == 0)
     {
       sprintf(buf, "Detected %d:\n", blocks);
-      //Serial.print(buf);
-      for (j=0; j<blocks; j++)
+      for (blockIterator = 0; blockIterator < blocks; blockIterator++)
       {
-        sprintf(buf, "  block %d: ", j);
+        sprintf(buf, "  block %d: ", blockIterator);
         //Serial.println(buf);
-        //pixy.blocks[j].print();         // in for u asta putem accesa x,y si altele prin pixy.blocks[j]
-        if(pixy.blocks[j].x < 106 )
+        //pixy.blocks[blockIterator].print();         // in for u asta putem accesa x,y si altele prin pixy.blocks[j]
+        if(pixy.blocks[blockIterator].x < 106 )
         {
           turnStanga();
           delay(1000);
@@ -52,21 +51,30 @@ void loop()
          } 
          else 
          {
-          if(pixy.blocks[j].x >=106 && pixy.blocks[j].x < 213)
+          if(pixy.blocks[blockIterator].x >= 106 && pixy.blocks[blockIterator].x < 213)
           {
             miscatiHoitu();
             pozInitial();
           }
           else
           {
-            turnDreapta();
-            delay(1000);
-            PasDupaTurnDreapta();
-            delay(1000);
-            pozInitial();
-           }
+              turnDreapta();
+              delay(1000);
+              PasDupaTurnDreapta();
+              delay(1000);
+              pozInitial();
+          }
          }
       }
+    }
+  }
+  else
+  {
+    noBlockFrameCounter++;
+    if(noBlockFrameCounter > 10000)
+    {
+      noBlockFrameCounter = 0;
+      PasMare(); 
     }
   } 
 }
@@ -184,4 +192,24 @@ void PasDupaTurnDreapta()
   Serial.println("#0 P1520 T500");
   Serial.println("#16 P1475 T500");
   delay(1000);
+}
+
+void PasMare()
+{
+  turnStanga();
+  delay(1000);
+  PasDupaTurnStanga();
+  delay(1000);
+  
+  turnStanga();
+  delay(1000);
+  PasDupaTurnStanga();
+  delay(1000);
+  
+  turnStanga();
+  delay(1000);
+  PasDupaTurnStanga();
+  delay(1000);
+  
+  pozInitial();  
 }
