@@ -53,6 +53,15 @@ void loop()
          {
           if(pixy.blocks[blockIterator].x >= 106 && pixy.blocks[blockIterator].x < 213)
           {
+            if(pixy.blocks[blockIterator].y > 125 )
+            {
+              miscatiHoitu();
+              miscatiHoitu();
+              sutDreptu();
+              delay(1000);
+              pozInitial();
+              continue;
+            }
             miscatiHoitu();
             pozInitial();
           }
@@ -110,14 +119,11 @@ void miscatiHoitu()
 
 void pozInitial()
 {
-  //talpi drepte
   Serial.println("#0 P1520 T500");
   Serial.println("#16 P1475 T500");
-  //genunchi drepti
-  Serial.println("#1 P1550 T500");  
-  Serial.println("#17 P1350 T500");
-  //solduri drepte
+  Serial.println("#1 P1550 T500");
   Serial.println("#2 P1500 T500");
+  Serial.println("#17 P1350 T500");
   Serial.println("#18 P1550 T500");
 }
 
@@ -143,26 +149,24 @@ void sutDreptu()
 
 void turnDreapta()
 {
-  //talpi drepte
   Serial.println("#16 P1475 T500");
   Serial.println("#0 P1520 T500");
-  //miscare picior stang in spate
+  
   Serial.println("#18 P1350 T500");     //de aici putem intoarce mai mult sau mai putin,astea 4 comenzi
   Serial.println("#17 P1050 T500");     
-  //miscare picior drept in fata
+  
   Serial.println("#1 P1250 T500");
   Serial.println("#2 P1200 T350");
 }
 
 void turnStanga()
 {
-  //talpi drepte
   Serial.println("#16 P1475 T500");
   Serial.println("#0 P1520 T500");
-  //miscare picior stang in fata
+  
   Serial.println("#18 P1750 T500");     //de aici putem intoarce mai mult sau mai putin,astea 4 comenzi
   Serial.println("#17 P1650 T500");     
-  //miscare picior drept in spate
+  
   Serial.println("#1 P1850 T500");
   Serial.println("#2 P1800 T350");
 }
