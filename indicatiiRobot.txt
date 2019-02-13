@@ -22,7 +22,7 @@ switch spre interior=inchis
 
 remake
 
-#18 1550 mijloc  mai mic= spate   mai mare= fata
+#18 1550 mijloc  mai mic= spate   mai mare=fata
 #2  1500 mijloc  mai mic=fata     mai mare=spate
 
 #1  1550 mijloc  mai mic=spate    mai mare=fata
@@ -31,4 +31,8 @@ remake
 #0  1520 mijloc  mai mic=ridica ext  mai mare=ridica int
 #16 1475 mijloc  mai mic=ridica int  mai mare=ridica ext
 
+de pasit cu ala ce are laba ridicata spre int
 
+toate motoarele daca is pa 0 is lesinate
+
+pixy-impartita camera in 3 cadrane = [0,106),[106,213),[213,319]
