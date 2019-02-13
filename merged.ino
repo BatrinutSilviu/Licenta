@@ -3,6 +3,9 @@
 #include <LiquidCrystal.h>
 
 #define TimpMediu "T500"
+#define TimpMic "T350"
+#define DelayMic 500
+#define DelayMare 1000
 
 Pixy pixy;
 
@@ -12,16 +15,16 @@ void setup()
   pixy.init();
   Serial.flush();
   pozInitial();
-  delay(1000);
+  delay(DelayMare);
   Serial.flush();
 }
 
 void loop() 
 {
-  static int blockFrameCounter = 0;
-  static int noBlockFrameCounter = 0;
-  int blockIterator;
-  uint16_t blocks;
+  static uint16_t blockFrameCounter = 0;
+  static uint16_t noBlockFrameCounter = 0;
+  uint8_t blockIterator;
+  uint8_t blocks;
   char buf[32]; 
   
   // grab blocks!
@@ -44,21 +47,21 @@ void loop()
         if(pixy.blocks[blockIterator].x < 106 )
         {
           turnStanga();
-          delay(1000);
+          delay(DelayMare);
           PasDupaTurnStanga();
-          delay(1000);
+          delay(DelayMare);
           pozInitial();
          } 
          else 
          {
           if(pixy.blocks[blockIterator].x >= 106 && pixy.blocks[blockIterator].x < 213)
           {
-            if(pixy.blocks[blockIterator].y > 125 )
+            if(pixy.blocks[blockIterator].y > 125)
             {
               miscatiHoitu();
               miscatiHoitu();
               sutDreptu();
-              delay(1000);
+              delay(DelayMare);
               pozInitial();
               continue;
             }
@@ -68,9 +71,9 @@ void loop()
           else
           {
               turnDreapta();
-              delay(1000);
+              delay(DelayMare);
               PasDupaTurnDreapta();
-              delay(1000);
+              delay(DelayMare);
               pozInitial();
           }
          }
@@ -91,134 +94,134 @@ void loop()
 void miscatiHoitu()
 {
   //inclinare talpii
-  Serial.println("#0 P1620 T500");
-  Serial.println("#16 P1575 T500");
-  delay(500);
+  Serial.println((String)"#0 P1620 "+TimpMediu);
+  Serial.println((String)"#16 P1575 "+TimpMediu);
+  delay(DelayMic);
   //primu pas
-  Serial.println("#1 P1400 T500");
-  Serial.println("#2 P1350 T500");
-  Serial.println("#17 P1200 T500");
-  Serial.println("#18 P1400 T500");
-  delay(1000);
-  Serial.println("#0 P1520 T500");
-  Serial.println("#16 P1475 T500");
-  delay(1000);
+  Serial.println((String)"#1 P1400 "+TimpMediu);
+  Serial.println((String)"#2 P1350 "+TimpMediu);
+  Serial.println((String)"#17 P1200 "+TimpMediu);
+  Serial.println((String)"#18 P1400 "+TimpMediu);
+  delay(DelayMare);
+  Serial.println((String)"#0 P1520 "+TimpMediu);
+  Serial.println((String)"#16 P1475 "+TimpMediu);
+  delay(DelayMare);
   //al doilea pas
-  Serial.println("#0 P1460 T500");  //1420
-  Serial.println("#16 P1375 T500");
-  delay(500);
-  Serial.println("#1 P1700 T500");
-  Serial.println("#2 P1650 T500");
-  Serial.println("#17 P1500 T500");
-  Serial.println("#18 P1700 T500");
-  delay(1000);
-  Serial.println("#0 P1520 T500");
-  Serial.println("#16 P1475 T500");
-  delay(1000);
+  Serial.println((String)"#0 P1460 "+TimpMediu);  //1420
+  Serial.println((String)"#16 P1375 "+TimpMediu);
+  delay(DelayMic);
+  Serial.println((String)"#1 P1700 "+TimpMediu);
+  Serial.println((String)"#2 P1650 "+TimpMediu);
+  Serial.println((String)"#17 P1500 "+TimpMediu);
+  Serial.println((String)"#18 P1700 "+TimpMediu);
+  delay(DelayMare);
+  Serial.println((String)"#0 P1520 "+TimpMediu);
+  Serial.println((String)"#16 P1475 "+TimpMediu);
+  delay(DelayMare);
 }
 
 void pozInitial()
 {
-  Serial.println("#0 P1520 T500");
-  Serial.println("#16 P1475 T500");
-  Serial.println("#1 P1550 T500");
-  Serial.println("#2 P1500 T500");
-  Serial.println("#17 P1350 T500");
-  Serial.println("#18 P1550 T500");
+  Serial.println((String)"#0 P1520 "+TimpMediu);
+  Serial.println((String)"#16 P1475 "+TimpMediu);
+  Serial.println((String)"#1 P1550 "+TimpMediu);
+  Serial.println((String)"#2 P1500 "+TimpMediu);
+  Serial.println((String)"#17 P1350 "+TimpMediu);
+  Serial.println((String)"#18 P1550 "+TimpMediu);
 }
 
 void sutDreptu()
 {
-  Serial.println("#17 P1350 T500");
-  Serial.println("#18 P1550 T500");
-  Serial.println("#16 P1650 T500");
-  Serial.println("#0 P1800 T500");
-  delay(1000);
+  Serial.println((String)"#17 P1350 "+TimpMediu);
+  Serial.println((String)"#18 P1550 "+TimpMediu);
+  Serial.println((String)"#16 P1650 "+TimpMediu);
+  Serial.println((String)"#0 P1800 "+TimpMediu);
+  delay(DelayMare);
 
-  Serial.println("#1 P1750 T500");
-  Serial.println("#2 P2000 T350");
-  Serial.println("#0 P1520 T500");
-  delay(1000);
+  Serial.println((String)"#1 P1750 "+TimpMediu);
+  Serial.println((String)"#2 P2000 "+TimpMic);
+  Serial.println((String)"#0 P1520 "+TimpMediu);
+  delay(DelayMare);
 
-  Serial.println("#1 P1750 T500");
-  Serial.println("#2 P1000 T350");
-  delay(500);
-  Serial.println("#1 P1550 T500");
-  Serial.println("#2 P1500 T500");
+  Serial.println((String)"#1 P1750 "+TimpMediu);
+  Serial.println((String)"#2 P1000 "+TimpMic);
+  delay(DelayMic);
+  Serial.println((String)"#1 P1550 "+TimpMediu);
+  Serial.println((String)"#2 P1500 "+TimpMediu);
 }
 
 void turnDreapta()
 {
-  Serial.println("#16 P1475 T500");
-  Serial.println("#0 P1520 T500");
+  Serial.println((String)"#16 P1475 "+TimpMediu);
+  Serial.println((String)"#0 P1520 "+TimpMediu);
   
-  Serial.println("#18 P1350 T500");     //de aici putem intoarce mai mult sau mai putin,astea 4 comenzi
-  Serial.println("#17 P1050 T500");     
+  Serial.println((String)"#18 P1350 "+TimpMediu);     //de aici putem intoarce mai mult sau mai putin,astea 4 comenzi
+  Serial.println((String)"#17 P1050 "+TimpMediu);     
   
-  Serial.println("#1 P1250 T500");
-  Serial.println("#2 P1200 T350");
+  Serial.println((String)"#1 P1250 "+TimpMediu);
+  Serial.println((String)"#2 P1200 "+TimpMic);
 }
 
 void turnStanga()
 {
-  Serial.println("#16 P1475 T500");
-  Serial.println("#0 P1520 T500");
+  Serial.println((String)"#16 P1475 "+TimpMediu);
+  Serial.println((String)"#0 P1520 "+TimpMediu);
   
-  Serial.println("#18 P1750 T500");     //de aici putem intoarce mai mult sau mai putin,astea 4 comenzi
-  Serial.println("#17 P1650 T500");     
+  Serial.println((String)"#18 P1750 "+TimpMediu);     //de aici putem intoarce mai mult sau mai putin,astea 4 comenzi
+  Serial.println((String)"#17 P1650 "+TimpMediu);     
   
-  Serial.println("#1 P1850 T500");
-  Serial.println("#2 P1800 T350");
+  Serial.println((String)"#1 P1850 "+TimpMediu);
+  Serial.println((String)"#2 P1800 "+TimpMic);
 }
 
 void PasDupaTurnStanga()
 {
-  Serial.println("#0 P1620 T500");
-  Serial.println("#16 P1575 T500");
-  delay(500);
+  Serial.println((String)"#0 P1620 "+TimpMediu);
+  Serial.println((String)"#16 P1575 "+TimpMediu);
+  delay(DelayMic);
   
-  Serial.println("#1 P1400 T500");
-  Serial.println("#2 P1350 T500");
-  Serial.println("#17 P1200 T500");
-  Serial.println("#18 P1400 T500");
-  delay(1000);
-  Serial.println("#0 P1520 T500");
-  Serial.println("#16 P1475 T500");
-  delay(1000);
+  Serial.println((String)"#1 P1400 "+TimpMediu);
+  Serial.println((String)"#2 P1350 "+TimpMediu);
+  Serial.println((String)"#17 P1200 "+TimpMediu);
+  Serial.println((String)"#18 P1400 "+TimpMediu);
+  delay(DelayMare);
+  Serial.println((String)"#0 P1520 "+TimpMediu);
+  Serial.println((String)"#16 P1475 "+TimpMediu);
+  delay(DelayMare);
 }
 
 void PasDupaTurnDreapta()
 {
-  Serial.println("#0 P1420 T500");
-  Serial.println("#16 P1375 T500");
-  delay(500);
+  Serial.println((String)"#0 P1420 "+TimpMediu);
+  Serial.println((String)"#16 P1375 "+TimpMediu);
+  delay(DelayMic);
 
-  Serial.println("#1 P1700 T500");
-  Serial.println("#2 P1550 T500");
-  Serial.println("#17 P1500 T500");
-  Serial.println("#18 P1700 T500");
-  delay(1000);
-  Serial.println("#0 P1520 T500");
-  Serial.println("#16 P1475 T500");
-  delay(1000);
+  Serial.println((String)"#1 P1700 "+TimpMediu);
+  Serial.println((String)"#2 P1550 "+TimpMediu);
+  Serial.println((String)"#17 P1500 "+TimpMediu);
+  Serial.println((String)"#18 P1700 "+TimpMediu);
+  delay(DelayMare);
+  Serial.println((String)"#0 P1520 "+TimpMediu);
+  Serial.println((String)"#16 P1475 "+TimpMediu);
+  delay(DelayMare);
 }
 
 void PasMare()
 {
   turnStanga();
-  delay(1000);
+  delay(DelayMare);
   PasDupaTurnStanga();
-  delay(1000);
+  delay(DelayMare);
   
   turnStanga();
-  delay(1000);
+  delay(DelayMare);
   PasDupaTurnStanga();
-  delay(1000);
+  delay(DelayMare);
   
   turnStanga();
-  delay(1000);
+  delay(DelayMare);
   PasDupaTurnStanga();
-  delay(1000);
+  delay(DelayMare);
   
   pozInitial();  
 }
