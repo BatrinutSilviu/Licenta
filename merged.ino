@@ -13,7 +13,7 @@ void setup()
   Serial.begin(115200);
   pixy.init();
   Serial.flush();
-  pozInitial();
+  pozitieInitiala();
   delay(DelayMare);
   Serial.flush();
 }
@@ -24,7 +24,6 @@ void loop()
   static uint16_t noBlockFrameCounter = 0;
   uint8_t blockIterator;
   uint8_t blocks;
-  char buf[32]; 
   
   // grab blocks!
   blocks = pixy.getBlocks();
@@ -37,19 +36,16 @@ void loop()
     // frame would bog down the Arduino
     if (blockFrameCounter % 50 == 0)
     {
-      sprintf(buf, "Detected %d:\n", blocks);
       for (blockIterator = 0; blockIterator < blocks; blockIterator++)
       {
-        sprintf(buf, "  block %d: ", blockIterator);
-        //Serial.println(buf);
         //pixy.blocks[blockIterator].print();         // in for u asta putem accesa x,y si altele prin pixy.blocks[j]
         if(pixy.blocks[blockIterator].x < 106 )
         {
-          turnStanga();
+          intoarcereStanga();
           delay(DelayMare);
-          PasDupaTurnStanga();
+          PasDupaIntoarcereStanga();
           delay(DelayMare);
-          pozInitial();
+          pozitieInitiala();
          } 
          else 
          {
@@ -57,23 +53,23 @@ void loop()
           {
             if(pixy.blocks[blockIterator].y > 125)
             {
-              miscatiHoitu();
-              miscatiHoitu();
+              miscareInFata();
+              miscareInFata();
               sutDreptu();
               delay(DelayMare);
-              pozInitial();
+              pozitieInitiala();
               continue;
             }
-            miscatiHoitu();
-            pozInitial();
+            miscareInFata();
+            pozitieInitiala();
           }
           else
           {
-              turnDreapta();
+              intoarcereDreapta();
               delay(DelayMare);
-              PasDupaTurnDreapta();
+              PasDupaIntoarcereDreapta();
               delay(DelayMare);
-              pozInitial();
+              pozitieInitiala();
           }
          }
       }
@@ -85,12 +81,12 @@ void loop()
     if(noBlockFrameCounter > 10000)
     {
       noBlockFrameCounter = 0;
-      PasMare(); 
+      intoarcereMareStanga(); 
     }
   } 
 }
 
-void miscatiHoitu()
+void miscareInFata()
 {
   //inclinare talpii
   Serial.println((String)"#0 P1620 "+TimpMediu);
@@ -119,7 +115,7 @@ void miscatiHoitu()
   delay(DelayMare);
 }
 
-void pozInitial()
+void pozitieInitiala()
 {
   Serial.println((String)"#0 P1520 "+TimpMediu);
   Serial.println((String)"#16 P1475 "+TimpMediu);
@@ -149,7 +145,7 @@ void sutDreptu()
   Serial.println((String)"#2 P1500 "+TimpMediu);
 }
 
-void turnDreapta()
+void intoarcereDreapta()
 {
   Serial.println((String)"#16 P1475 "+TimpMediu);
   Serial.println((String)"#0 P1520 "+TimpMediu);
@@ -161,7 +157,7 @@ void turnDreapta()
   Serial.println((String)"#2 P1200 "+TimpMic);
 }
 
-void turnStanga()
+void intoarcereStanga()
 {
   Serial.println((String)"#16 P1475 "+TimpMediu);
   Serial.println((String)"#0 P1520 "+TimpMediu);
@@ -173,7 +169,7 @@ void turnStanga()
   Serial.println((String)"#2 P1800 "+TimpMic);
 }
 
-void PasDupaTurnStanga()
+void PasDupaIntoarcereStanga()
 {
   Serial.println((String)"#0 P1620 "+TimpMediu);
   Serial.println((String)"#16 P1575 "+TimpMediu);
@@ -189,7 +185,7 @@ void PasDupaTurnStanga()
   delay(DelayMare);
 }
 
-void PasDupaTurnDreapta()
+void PasDupaIntoarcereDreapta()
 {
   Serial.println((String)"#0 P1420 "+TimpMediu);
   Serial.println((String)"#16 P1375 "+TimpMediu);
@@ -205,22 +201,22 @@ void PasDupaTurnDreapta()
   delay(DelayMare);
 }
 
-void PasMare()
+void intoarcereMareStanga()
 {
-  turnStanga();
+  intoarcereStanga();
   delay(DelayMare);
-  PasDupaTurnStanga();
-  delay(DelayMare);
-  
-  turnStanga();
-  delay(DelayMare);
-  PasDupaTurnStanga();
+  PasDupaIntoarcereStanga();
   delay(DelayMare);
   
-  turnStanga();
+  intoarcereStanga();
   delay(DelayMare);
-  PasDupaTurnStanga();
+  PasDupaIntoarcereStanga();
   delay(DelayMare);
   
-  pozInitial();  
+  intoarcereStanga();
+  delay(DelayMare);
+  PasDupaIntoarcereStanga();
+  delay(DelayMare);
+  
+  pozitieInitiala();  
 }
