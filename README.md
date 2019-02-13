@@ -1,4 +1,3 @@
 # Licenta
 Licenta
-Stil de lucru: superAgileScrumKanbanSaiyan
-Limbaj utilizat: HTMELEUUUUU si JAVASCRIPTOOOOO (adaptate pentru arduino)
+BratRobot comandat prin Arduino
