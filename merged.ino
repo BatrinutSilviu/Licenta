@@ -1,6 +1,5 @@
 #include <SPI.h>  
 #include <Pixy.h>
-#include <LiquidCrystal.h>
 
 #define TimpMediu "T500"
 #define TimpMic "T350"
@@ -129,7 +128,7 @@ void pozInitial()
   Serial.println((String)"#17 P1350 "+TimpMediu);
   Serial.println((String)"#18 P1550 "+TimpMediu);
 }
-
+//Modificat parametri !!!! nu mai merge ca s-a schimbat greutatea
 void sutDreptu()
 {
   Serial.println((String)"#17 P1350 "+TimpMediu);
