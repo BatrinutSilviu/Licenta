@@ -36,3 +36,8 @@ de pasit cu ala ce are laba ridicata spre int
 toate motoarele daca is pa 0 is lesinate
 
 pixy-impartita camera in 3 cadrane = [0,106),[106,213),[213,319]
+
+pixy x =(0,319)
+pixy y =(0,199)
+width  =(1,320)
+height =(1,200)
