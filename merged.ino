@@ -231,11 +231,11 @@ void dans()
 {
   intoarcereStanga();
   delay(1000);
-  intoarecereDreapta();
+  intoarcereDreapta();
   delay(1000);
   pozitieInitiala();
   delay(1000);
   inchinare();
   delay(1000);
-  pozInitial();
+  pozitieInitiala();
 }
