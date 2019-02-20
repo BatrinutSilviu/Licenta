@@ -220,3 +220,22 @@ void intoarcereMareStanga()
   
   pozitieInitiala();  
 }
+
+void inchinare()
+{
+  Serial.println((String)"#1 P2250 "+TimpMediu);
+  Serial.println((String)"#17 P750 "+TimpMediu);
+}
+
+void dans()
+{
+  intoarcereStanga();
+  delay(1000);
+  intoarecereDreapta();
+  delay(1000);
+  pozitieInitiala();
+  delay(1000);
+  inchinare();
+  delay(1000);
+  pozInitial();
+}
