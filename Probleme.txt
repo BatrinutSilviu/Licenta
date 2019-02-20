@@ -1,0 +1,12 @@
+Sensibilitate la detectia culorii cu ajutorul camerei Pixy
+Gestionarea cablurilor
+Cablurile ies/stau superficial
+Motoarele au diferite referinte
+Pasitul nu mergea drept
+Am refacut modul de a pasi in functie de un video de pe net
+Versionat pe git
+Echilibtu diferit in functie de greutatea obiectelor de pe el si de cabluri
+Placa a venit cu un jumper pus la rx care impiedica buna functionare
+Am schimbat pozitia initiala(pozitie de stat drept) a robotului
+Miscari prea bruste,ce dezechilibrau robotul
+Nu putem sa facem sa mearga modulul Bluetooth
