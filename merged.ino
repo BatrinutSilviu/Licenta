@@ -52,11 +52,20 @@ void loop()
          {
           if(pixy.blocks[blockIterator].x >= 106 && pixy.blocks[blockIterator].x < 213)
           {
-            if(pixy.blocks[blockIterator].y > 150)
+            if(pixy.blocks[blockIterator].y > 150 && pixy.blocks[blockIterator].x >= 155 )
             {
               miscareInFata();
               miscareInFata();
               sutDreptu();
+              delay(DelayMare);
+              pozitieInitiala();
+              continue;
+            }
+            if(pixy.blocks[blockIterator].y > 150 && pixy.blocks[blockIterator].x < 155)
+            {
+              miscareInFata();
+              miscareInFata();
+              sutStangu();
               delay(DelayMare);
               pozitieInitiala();
               continue;
