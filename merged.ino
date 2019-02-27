@@ -16,6 +16,7 @@ void setup()
   pozitieInitiala();
   delay(DelayMare);
   Serial.flush();
+  dans();
 }
 
 void loop() 
@@ -51,7 +52,7 @@ void loop()
          {
           if(pixy.blocks[blockIterator].x >= 106 && pixy.blocks[blockIterator].x < 213)
           {
-            if(pixy.blocks[blockIterator].y > 125)
+            if(pixy.blocks[blockIterator].y > 150)
             {
               miscareInFata();
               miscareInFata();
@@ -145,6 +146,26 @@ void sutDreptu()
   Serial.println((String)"#2 P1500 "+TimpMediu);
 }
 
+void sutStangu()
+{
+  Serial.println((String)"#2 P1500 "+TimpMediu);
+  Serial.println((String)"#1 P1550 "+TimpMediu);
+  Serial.println((String)"#16 P1150 "+TimpMediu);
+  Serial.println((String)"#0 P1300 "+TimpMediu);
+  delay(DelayMare);
+
+  Serial.println((String)"#17 P1150 "+TimpMediu);
+  Serial.println((String)"#18 P1050 "+TimpMic);
+  Serial.println((String)"#16 P1475 "+TimpMediu);
+  delay(DelayMare);
+
+  Serial.println((String)"#17 P1150 "+TimpMediu);
+  Serial.println((String)"#18 P2050 "+TimpMic);
+  delay(DelayMic);
+  Serial.println((String)"#17 P1350 "+TimpMediu);
+  Serial.println((String)"#18 P1550 "+TimpMediu);
+}
+
 void intoarcereDreapta()
 {
   Serial.println((String)"#16 P1475 "+TimpMediu);
@@ -230,12 +251,13 @@ void inchinare()
 void dans()
 {
   intoarcereStanga();
-  delay(1000);
+  delay(DelayMare);
   intoarcereDreapta();
-  delay(1000);
+  delay(DelayMare);
   pozitieInitiala();
-  delay(1000);
+  delay(DelayMare);
   inchinare();
-  delay(1000);
+  delay(DelayMare);
   pozitieInitiala();
+  delay(DelayMare);
 }
