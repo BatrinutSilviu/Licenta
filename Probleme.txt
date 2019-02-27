@@ -10,3 +10,4 @@ Placa a venit cu un jumper pus la rx care impiedica buna functionare
 Am schimbat pozitia initiala(pozitie de stat drept) a robotului
 Miscari prea bruste,ce dezechilibrau robotul
 Nu putem sa facem sa mearga modulul Bluetooth
+La un moment dat trebuia alimentat cu 2A si ne-am chinuit mult pana sa aflam
