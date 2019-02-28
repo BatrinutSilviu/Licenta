@@ -43,3 +43,4 @@ width  =(1,320)
 height =(1,200)
 
 Blat lab =40 pe 73 cm
+Suprafata verde= 57.5 pe 77.5 cm
