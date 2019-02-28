@@ -44,3 +44,7 @@ height =(1,200)
 
 Blat lab =40 pe 73 cm
 Suprafata verde= 57.5 pe 77.5 cm
+Arena:
+-inaltime=4,4 cm
+-latime=78 cm
+-lungime=84,5 cm
