@@ -21,20 +21,16 @@ void setup()
 
 void loop() 
 {
-  static uint16_t blockFrameCounter = 0;
-  static uint16_t noBlockFrameCounter = 0;
   uint8_t blockIterator;
   uint8_t blocks;
+  static uint16_t blockFrameCounter = 0;
+  static uint16_t noBlockFrameCounter = 0;
   
-  // grab blocks!
   blocks = pixy.getBlocks();
-  // If there are detect blocks, print them!
   if (blocks)
   {
     blockFrameCounter++;
-    noBlockFrameCounter=0;
-    // do this (print) every 50 frames because printing every
-    // frame would bog down the Arduino
+    noBlockFrameCounter = 0;
     if (blockFrameCounter % 50 == 0)
     {
       for (blockIterator = 0; blockIterator < blocks; blockIterator++)
@@ -233,21 +229,13 @@ void PasDupaIntoarcereDreapta()
 
 void intoarcereMareStanga()
 {
-  intoarcereStanga();
-  delay(DelayMare);
-  PasDupaIntoarcereStanga();
-  delay(DelayMare);
-  
-  intoarcereStanga();
-  delay(DelayMare);
-  PasDupaIntoarcereStanga();
-  delay(DelayMare);
-  
-  intoarcereStanga();
-  delay(DelayMare);
-  PasDupaIntoarcereStanga();
-  delay(DelayMare);
-  
+  for(uint8_t iterator = 0;iterator < 3;iterator++)
+  {
+      intoarcereStanga();
+      delay(DelayMare);
+      PasDupaIntoarcereStanga();
+      delay(DelayMare);
+  }
   pozitieInitiala();  
 }
 
