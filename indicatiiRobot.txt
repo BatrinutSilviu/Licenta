@@ -41,3 +41,5 @@ pixy x =(0,319)
 pixy y =(0,199)
 width  =(1,320)
 height =(1,200)
+
+Blat lab =40 pe 73 cm
