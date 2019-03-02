@@ -11,3 +11,4 @@ Am schimbat pozitia initiala(pozitie de stat drept) a robotului
 Miscari prea bruste,ce dezechilibrau robotul
 Nu putem sa facem sa mearga modulul Bluetooth
 La un moment dat trebuia alimentat cu 2A si ne-am chinuit mult pana sa aflam
+Optimizare cod:Inlocuire string cu char array,#Define in loc de variabile globale,cod lizibil,
