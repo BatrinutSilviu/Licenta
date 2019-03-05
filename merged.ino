@@ -121,6 +121,34 @@ void miscareInFata()
   delay(DelayMare);
 }
 
+void mersSpate()
+{
+  //inclinare talpii
+  Serial.println((String)"#0 P1620 "+TimpMediu);
+  Serial.println((String)"#16 P1575 "+TimpMediu);
+  delay(DelayMic);
+  Serial.println((String)"#1 P1700 "+TimpMediu);
+  Serial.println((String)"#2 P1650 "+TimpMediu);
+  Serial.println((String)"#17 P1500 "+TimpMediu);
+  Serial.println((String)"#18 P1700 "+TimpMediu);
+  delay(DelayMare);
+  Serial.println((String)"#0 P1520 "+TimpMediu);
+  Serial.println((String)"#16 P1475 "+TimpMediu);
+  delay(DelayMare);    
+  //al doilea pas
+  Serial.println((String)"#0 P1460 "+TimpMediu);  //1420
+  Serial.println((String)"#16 P1375 "+TimpMediu);
+  delay(DelayMic);
+  Serial.println((String)"#1 P1400 "+TimpMediu);
+  Serial.println((String)"#2 P1350 "+TimpMediu);
+  Serial.println((String)"#17 P1200 "+TimpMediu);
+  Serial.println((String)"#18 P1400 "+TimpMediu);
+  delay(DelayMare);
+  Serial.println((String)"#0 P1520 "+TimpMediu);
+  Serial.println((String)"#16 P1475 "+TimpMediu);
+  delay(DelayMare);
+}
+
 void pozitieInitiala()
 {
   Serial.println((String)"#0 P1520 "+TimpMediu);
