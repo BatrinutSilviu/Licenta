@@ -25,6 +25,7 @@ void loop()
   uint8_t blocks;
   static uint16_t blockFrameCounter = 0;
   static uint16_t noBlockFrameCounter = 0;
+  static uint8_t searchCounter = 0;
   
   blocks = pixy.getBlocks();
   if (blocks)
@@ -86,8 +87,18 @@ void loop()
     noBlockFrameCounter++;
     if(noBlockFrameCounter > 10000)
     {
+      searchCounter++;
       noBlockFrameCounter = 0;
-      intoarcereMareStanga(); 
+      if(searchCounter == 1)
+      {
+        mersSpate();
+        pozitieInitiala();
+      }
+      if(searchCounter == 2)
+      {
+        intoarcereMareStanga(); 
+        searchCounter = 0;
+      }
     }
   } 
 }
