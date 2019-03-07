@@ -5,6 +5,7 @@
 #define TimpMic "T350"
 #define DelayMic 500
 #define DelayMare 1000
+#define DelayAsteptare 2000
 
 Pixy pixy;
 
@@ -56,6 +57,7 @@ void loop()
               sutDreptu();
               delay(DelayMare);
               pozitieInitiala();
+              delay(DelayAsteptare);
               continue;
             }
             if(pixy.blocks[blockIterator].y > 150 && pixy.blocks[blockIterator].x < 155)
@@ -65,6 +67,7 @@ void loop()
               sutStangu();
               delay(DelayMare);
               pozitieInitiala();
+              delay(DelayAsteptare);
               continue;
             }
             miscareInFata();
@@ -93,6 +96,7 @@ void loop()
       {
         mersSpate();
         pozitieInitiala();
+        delay(DelayAsteptare);
       }
       if(searchCounter == 2)
       {
