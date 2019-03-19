@@ -1,2 +1,3 @@
 https://store.arduino.cc/arduino-uno-rev3
 http://www.lynxmotion.com/images/html/build104.htm
+https://docs.pixycam.com/wiki/doku.php?id=wiki:v1:overview
