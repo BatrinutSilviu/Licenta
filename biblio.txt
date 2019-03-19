@@ -1,2 +1,2 @@
-https://en.wikipedia.org/wiki/Arduino_Uno
+https://store.arduino.cc/arduino-uno-rev3
 http://www.lynxmotion.com/images/html/build104.htm
