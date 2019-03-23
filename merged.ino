@@ -95,6 +95,7 @@ void loop()
       if(searchCounter == 1)
       {
         mersSpate();
+        mersSpate();
         pozitieInitiala();
         delay(DelayAsteptare);
       }
@@ -134,6 +135,7 @@ void miscareInFata()
   Serial.println((String)"#0 P1520 "+TimpMediu);
   Serial.println((String)"#16 P1475 "+TimpMediu);
   delay(DelayMare);
+  Serial.flush();
 }
 
 void mersSpate()
@@ -151,7 +153,7 @@ void mersSpate()
   Serial.println((String)"#16 P1475 "+TimpMediu);
   delay(DelayMare);    
   //al doilea pas
-  Serial.println((String)"#0 P1460 "+TimpMediu);  //1420
+  Serial.println((String)"#0 P1420 "+TimpMediu);
   Serial.println((String)"#16 P1375 "+TimpMediu);
   delay(DelayMic);
   Serial.println((String)"#1 P1400 "+TimpMediu);
@@ -162,6 +164,7 @@ void mersSpate()
   Serial.println((String)"#0 P1520 "+TimpMediu);
   Serial.println((String)"#16 P1475 "+TimpMediu);
   delay(DelayMare);
+  Serial.flush();
 }
 
 void pozitieInitiala()
@@ -172,6 +175,7 @@ void pozitieInitiala()
   Serial.println((String)"#2 P1500 "+TimpMediu);
   Serial.println((String)"#17 P1350 "+TimpMediu);
   Serial.println((String)"#18 P1550 "+TimpMediu);
+  Serial.flush();
 }
 //Modificat parametri !!!! nu mai merge ca s-a schimbat greutatea
 void sutDreptu()
@@ -192,6 +196,7 @@ void sutDreptu()
   delay(DelayMic);
   Serial.println((String)"#1 P1550 "+TimpMediu);
   Serial.println((String)"#2 P1500 "+TimpMediu);
+  Serial.flush();
 }
 
 void sutStangu()
@@ -212,6 +217,7 @@ void sutStangu()
   delay(DelayMic);
   Serial.println((String)"#17 P1350 "+TimpMediu);
   Serial.println((String)"#18 P1550 "+TimpMediu);
+  Serial.flush();
 }
 
 void intoarcereDreapta()
@@ -224,6 +230,7 @@ void intoarcereDreapta()
   
   Serial.println((String)"#1 P1250 "+TimpMediu);
   Serial.println((String)"#2 P1200 "+TimpMic);
+  Serial.flush();
 }
 
 void intoarcereStanga()
@@ -236,6 +243,7 @@ void intoarcereStanga()
   
   Serial.println((String)"#1 P1850 "+TimpMediu);
   Serial.println((String)"#2 P1800 "+TimpMic);
+  Serial.flush();
 }
 
 void PasDupaIntoarcereStanga()
@@ -252,6 +260,7 @@ void PasDupaIntoarcereStanga()
   Serial.println((String)"#0 P1520 "+TimpMediu);
   Serial.println((String)"#16 P1475 "+TimpMediu);
   delay(DelayMare);
+  Serial.flush();
 }
 
 void PasDupaIntoarcereDreapta()
@@ -268,6 +277,7 @@ void PasDupaIntoarcereDreapta()
   Serial.println((String)"#0 P1520 "+TimpMediu);
   Serial.println((String)"#16 P1475 "+TimpMediu);
   delay(DelayMare);
+  Serial.flush();
 }
 
 void intoarcereMareStanga()
@@ -286,6 +296,7 @@ void inchinare()
 {
   Serial.println((String)"#1 P2250 "+TimpMediu);
   Serial.println((String)"#17 P750 "+TimpMediu);
+  Serial.flush();
 }
 
 void dans()
