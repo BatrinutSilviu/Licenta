@@ -4,3 +4,4 @@ https://docs.pixycam.com/wiki/doku.php?id=wiki:v1:overview
 http://www.lynxmotion.com/p-395-ssc-32-servo-controller.aspx
 https://www.tiobe.com/tiobe-index/
 https://en.wikipedia.org/wiki/Humanoid_robot
+http://www.extech.com/display/?id=14197
