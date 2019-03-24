@@ -48,3 +48,14 @@ Arena:
 -inaltime=4,4 cm
 -latime=78 cm
 -lungime=84,5 cm
+
+ESP   Arduino   Func
+2     2         Manual/Automat
+15    3         Spate     
+5     4         Fata
+18    5         Stanga
+23    6         Dreapta
+19    7         SutDreptu
+22    8         SutStangu
+
+
