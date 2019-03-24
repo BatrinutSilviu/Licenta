@@ -1,3 +1,3 @@
 # Licenta
 Licenta
-BratRobot comandat prin Arduino
+Robot biped comandat manual sau automat
