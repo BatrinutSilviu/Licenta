@@ -13,6 +13,13 @@ void setup()
 {
   Serial.begin(115200);
   pixy.init();
+  pinMode(2, INPUT);
+  pinMode(3, INPUT);
+  pinMode(4, INPUT);
+  pinMode(5, INPUT);
+  pinMode(6, INPUT);
+  pinMode(7, INPUT);
+  pinMode(8, INPUT);
   Serial.flush();
   pozitieInitiala();
   delay(DelayMare);
@@ -22,52 +29,79 @@ void setup()
 
 void loop() 
 {
-  uint8_t blocks;
-  static uint16_t blockFrameCounter = 0;
-  static uint16_t noBlockFrameCounter = 0;
-  static uint8_t searchCounter = 0;
-  
-  blocks = pixy.getBlocks();
-  if (blocks)
-  {
-    blockFrameCounter++;
-    noBlockFrameCounter = 0;
-    if (blockFrameCounter % 50 == 0)
+  if(digitalRead(2) ==HIGH)
+  { 
+    if( digitalRead(3) == HIGH)
     {
-        if(pixy.blocks[0].x < 106 )
-        {
-          intoarcereStanga();
-          delay(DelayMare);
-          PasDupaIntoarcereStanga();
-          delay(DelayMare);
-          pozitieInitiala();
-          searchCounter = 0;
-         } 
-         else 
-         {
-          if(pixy.blocks[0].x >= 106 && pixy.blocks[0].x < 213)
+      mersSpate();
+      pozitieInitiala();
+    }
+    if(digitalRead(4) == HIGH)
+    {
+      miscareInFata();
+      pozitieInitiala();
+    }
+    if(digitalRead(5) == HIGH)
+    {
+       intoarcereStanga();
+       delay(DelayMare);
+       PasDupaIntoarcereStanga();
+       pozitieInitiala();
+    }
+    if(digitalRead(6) == HIGH)
+    {
+      intoarcereDreapta();
+      delay(DelayMare);
+      PasDupaIntoarcereDreapta();
+      pozitieInitiala();
+    }
+    if(digitalRead(7) == HIGH)
+    {
+      sutDreptu();
+      delay(DelayMare);
+      pozitieInitiala();
+    }
+    if(digitalRead(8) == HIGH)
+    {
+      sutStangu();
+      delay(DelayMare);
+      pozitieInitiala();
+    }
+  }
+  else
+  {
+    uint8_t blocks;
+    static uint16_t blockFrameCounter = 0;
+    static uint16_t noBlockFrameCounter = 0;
+    static uint8_t searchCounter = 0;
+    
+    blocks = pixy.getBlocks();
+    if (blocks)
+    {
+      blockFrameCounter++;
+      noBlockFrameCounter = 0;
+      if (blockFrameCounter % 50 == 0)
+      {
+          if(pixy.blocks[0].x < 106 )
           {
-            if(pixy.blocks[0].y > 175 && pixy.blocks[0].x >= 155)
+            intoarcereStanga();
+            delay(DelayMare);
+            PasDupaIntoarcereStanga();
+            delay(DelayMare);
+            pozitieInitiala();
+            searchCounter = 0;
+           } 
+           else 
+           {
+            if(pixy.blocks[0].x >= 106 && pixy.blocks[0].x < 213)
             {
-              miscareInFata();
-              miscareInFata();
-              pozitieInitiala();
-              delay(DelayMare);
-              sutDreptu();
-              delay(DelayMare);
-              pozitieInitiala();
-              delay(DelayAsteptare);
-              searchCounter = 0;
-            }
-            else
-            {
-              if(pixy.blocks[0].y > 175 && pixy.blocks[0].x < 155)
+              if(pixy.blocks[0].y > 175 && pixy.blocks[0].x >= 155)
               {
                 miscareInFata();
                 miscareInFata();
                 pozitieInitiala();
                 delay(DelayMare);
-                sutStangu();
+                sutDreptu();
                 delay(DelayMare);
                 pozitieInitiala();
                 delay(DelayAsteptare);
@@ -75,45 +109,60 @@ void loop()
               }
               else
               {
-                miscareInFata();
-                pozitieInitiala();
-                searchCounter = 0;
+                if(pixy.blocks[0].y > 175 && pixy.blocks[0].x < 155)
+                {
+                  miscareInFata();
+                  miscareInFata();
+                  pozitieInitiala();
+                  delay(DelayMare);
+                  sutStangu();
+                  delay(DelayMare);
+                  pozitieInitiala();
+                  delay(DelayAsteptare);
+                  searchCounter = 0;
+                }
+                else
+                {
+                  miscareInFata();
+                  pozitieInitiala();
+                  searchCounter = 0;
+                }
               }
             }
+            else
+            {
+                intoarcereDreapta();
+                delay(DelayMare);
+                PasDupaIntoarcereDreapta();
+                delay(DelayMare);
+                pozitieInitiala();
+                searchCounter = 0;
+            }
           }
-          else
-          {
-              intoarcereDreapta();
-              delay(DelayMare);
-              PasDupaIntoarcereDreapta();
-              delay(DelayMare);
-              pozitieInitiala();
-              searchCounter = 0;
-          }
-        }
+      }
     }
-  }
-  else
-  {
-    noBlockFrameCounter++;
-    if(noBlockFrameCounter > 10000)
+    else
     {
-      searchCounter++;
-      noBlockFrameCounter = 0;
-      if(searchCounter == 1)
+      noBlockFrameCounter++;
+      if(noBlockFrameCounter > 10000)
       {
-        mersSpate();
-        mersSpate();
-        pozitieInitiala();
-        delay(DelayMare);
+        searchCounter++;
+        noBlockFrameCounter = 0;
+        if(searchCounter == 1)
+        {
+          mersSpate();
+          mersSpate();
+          pozitieInitiala();
+          delay(DelayMare);
+        }
+        if(searchCounter == 2)
+        {
+          intoarcereMareStanga(); 
+          searchCounter = 0;
+        }
       }
-      if(searchCounter == 2)
-      {
-        intoarcereMareStanga(); 
-        searchCounter = 0;
-      }
-    }
-  } 
+    } 
+  }
 }
 
 void miscareInFata()
