@@ -22,7 +22,6 @@ void setup()
 
 void loop() 
 {
-  //uint8_t blockIterator;
   uint8_t blocks;
   static uint16_t blockFrameCounter = 0;
   static uint16_t noBlockFrameCounter = 0;
@@ -35,7 +34,6 @@ void loop()
     noBlockFrameCounter = 0;
     if (blockFrameCounter % 50 == 0)
     {
-        //pixy.blocks[blockIterator].print();         // in for u asta putem accesa x,y si altele prin pixy.blocks[j]
         if(pixy.blocks[0].x < 106 )
         {
           intoarcereStanga();
@@ -63,24 +61,24 @@ void loop()
             }
             else
             {
-            if(pixy.blocks[0].y > 175 && pixy.blocks[0].x < 155)
-            {
-              miscareInFata();
-              miscareInFata();
-              pozitieInitiala();
-              delay(DelayMare);
-              sutStangu();
-              delay(DelayMare);
-              pozitieInitiala();
-              delay(DelayAsteptare);
-              searchCounter = 0;
-            }
-            else
-            {
-              miscareInFata();
-              pozitieInitiala();
-              searchCounter = 0;
-            }
+              if(pixy.blocks[0].y > 175 && pixy.blocks[0].x < 155)
+              {
+                miscareInFata();
+                miscareInFata();
+                pozitieInitiala();
+                delay(DelayMare);
+                sutStangu();
+                delay(DelayMare);
+                pozitieInitiala();
+                delay(DelayAsteptare);
+                searchCounter = 0;
+              }
+              else
+              {
+                miscareInFata();
+                pozitieInitiala();
+                searchCounter = 0;
+              }
             }
           }
           else
@@ -92,7 +90,7 @@ void loop()
               pozitieInitiala();
               searchCounter = 0;
           }
-         }
+        }
     }
   }
   else
