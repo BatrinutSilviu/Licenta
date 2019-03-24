@@ -5,7 +5,7 @@
 #define TimpMic "T350"
 #define DelayMic 500
 #define DelayMare 1000
-#define DelayAsteptare 2000
+#define DelayAsteptare 4000
 
 Pixy pixy;
 
@@ -22,7 +22,7 @@ void setup()
 
 void loop() 
 {
-  uint8_t blockIterator;
+  //uint8_t blockIterator;
   uint8_t blocks;
   static uint16_t blockFrameCounter = 0;
   static uint16_t noBlockFrameCounter = 0;
@@ -35,43 +35,53 @@ void loop()
     noBlockFrameCounter = 0;
     if (blockFrameCounter % 50 == 0)
     {
-      for (blockIterator = 0; blockIterator < blocks; blockIterator++)
-      {
         //pixy.blocks[blockIterator].print();         // in for u asta putem accesa x,y si altele prin pixy.blocks[j]
-        if(pixy.blocks[blockIterator].x < 106 )
+        if(pixy.blocks[0].x < 106 )
         {
           intoarcereStanga();
           delay(DelayMare);
           PasDupaIntoarcereStanga();
           delay(DelayMare);
           pozitieInitiala();
+          searchCounter = 0;
          } 
          else 
          {
-          if(pixy.blocks[blockIterator].x >= 106 && pixy.blocks[blockIterator].x < 213)
+          if(pixy.blocks[0].x >= 106 && pixy.blocks[0].x < 213)
           {
-            if(pixy.blocks[blockIterator].y > 150 && pixy.blocks[blockIterator].x >= 155 )
+            if(pixy.blocks[0].y > 175 && pixy.blocks[0].x >= 155)
             {
               miscareInFata();
               miscareInFata();
+              pozitieInitiala();
+              delay(DelayMare);
               sutDreptu();
               delay(DelayMare);
               pozitieInitiala();
               delay(DelayAsteptare);
-              continue;
+              searchCounter = 0;
             }
-            if(pixy.blocks[blockIterator].y > 150 && pixy.blocks[blockIterator].x < 155)
+            else
+            {
+            if(pixy.blocks[0].y > 175 && pixy.blocks[0].x < 155)
             {
               miscareInFata();
               miscareInFata();
+              pozitieInitiala();
+              delay(DelayMare);
               sutStangu();
               delay(DelayMare);
               pozitieInitiala();
               delay(DelayAsteptare);
-              continue;
+              searchCounter = 0;
             }
-            miscareInFata();
-            pozitieInitiala();
+            else
+            {
+              miscareInFata();
+              pozitieInitiala();
+              searchCounter = 0;
+            }
+            }
           }
           else
           {
@@ -80,9 +90,9 @@ void loop()
               PasDupaIntoarcereDreapta();
               delay(DelayMare);
               pozitieInitiala();
+              searchCounter = 0;
           }
          }
-      }
     }
   }
   else
@@ -97,7 +107,7 @@ void loop()
         mersSpate();
         mersSpate();
         pozitieInitiala();
-        delay(DelayAsteptare);
+        delay(DelayMare);
       }
       if(searchCounter == 2)
       {
@@ -183,7 +193,7 @@ void sutDreptu()
   Serial.println((String)"#17 P1350 "+TimpMediu);
   Serial.println((String)"#18 P1550 "+TimpMediu);
   Serial.println((String)"#16 P1650 "+TimpMediu);
-  Serial.println((String)"#0 P1800 "+TimpMediu);
+  Serial.println((String)"#0 P1900 "+TimpMediu);
   delay(DelayMare);
 
   Serial.println((String)"#1 P1750 "+TimpMediu);
