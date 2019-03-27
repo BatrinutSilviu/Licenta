@@ -11,3 +11,4 @@ http://www.agilityrobotics.com/robots#cassie
 https://www.robotshop.com/en/ez-robot-jd-humanoid-robot.html
 https://docs.oracle.com/javase
 https://developer.android.com/studio
+https://randomnerdtutorials.com/esp32-web-server-arduino-ide
