@@ -14,77 +14,91 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 
-public class MainActivity extends AppCompatActivity {
-
-    private boolean ManAut = false;
+public class MainActivity extends AppCompatActivity
+{
+    private boolean manualSauAutomat = false;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+	{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
-    public void apasareButonManual(View v) {
+	
+	public void sendGetRequest(String url)
+	{
+		StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+			new Response.Listener<String>() 
+			{
+				@Override
+				public void onResponse(String response) 
+				{
+				}
+			}, 
+			new Response.ErrorListener() 
+			{
+				@Override
+				public void onErrorResponse(VolleyError error) 
+				{
+				}
+			});
+	}
+	
+    public void apasareButonManual(View v)
+	{
         RequestQueue queue = Volley.newRequestQueue(this);
         String url;
-        if (ManAut == false) {
+        if (manualSauAutomat == false) 
+		{
             url = "http://192.168.1.126/2/on";
-        } else {
+        } 
+		else 
+		{
             url = "http://192.168.1.126/2/off";
         }
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            }
-        });
-        ManAut = !ManAut;
+		sendGetRequest(url);
+        manualSauAutomat = !manualSauAutomat;
         queue.add(stringRequest);
     }
 
-    public void apasareButonUniversal(View v) {
+    public void apasareButonUniversal(View v)
+	{
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "";
-        switch (v.getId()) {
-            case (R.id.fata): {
+        switch (v.getId())
+		{
+            case (R.id.fata):
+			{
                 url = "http://192.168.1.126/5/on";
                 break;
             }
-            case (R.id.spate): {
+            case (R.id.spate):
+			{
                 url = "http://192.168.1.126/15/on";
                 break;
             }
-            case (R.id.stanga): {
+            case (R.id.stanga):
+			{
                 url = "http://192.168.1.126/18/on";
                 break;
             }
-            case (R.id.dreapta): {
+            case (R.id.dreapta):
+			{
                 url = "http://192.168.1.126/23/on";
                 break;
             }
-            case (R.id.sutdrept): {
+            case (R.id.sutdrept):
+			{
                 url = "http://192.168.1.126/19/on";
                 break;
             }
-            case (R.id.sutstangu): {
+            case (R.id.sutstangu):
+			{
                 url = "http://192.168.1.126/22/on";
                 break;
             }
         }
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            }
-        });
+		sendGetRequest(url);
         queue.add(stringRequest);
     }
 }
