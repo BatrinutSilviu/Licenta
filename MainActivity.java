@@ -14,91 +14,81 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 
-public class MainActivity extends AppCompatActivity
-{
+public class MainActivity extends AppCompatActivity {
+
     private boolean manualSauAutomat = false;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-	{
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-	
-	public void sendGetRequest(String url)
-	{
-		StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-			new Response.Listener<String>() 
-			{
-				@Override
-				public void onResponse(String response) 
-				{
-				}
-			}, 
-			new Response.ErrorListener() 
-			{
-				@Override
-				public void onErrorResponse(VolleyError error) 
-				{
-				}
-			});
-	}
-	
-    public void apasareButonManual(View v)
-	{
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url;
-        if (manualSauAutomat == false) 
-		{
-            url = "http://192.168.1.126/2/on";
-        } 
-		else 
-		{
-            url = "http://192.168.1.126/2/off";
-        }
-		sendGetRequest(url);
-        manualSauAutomat = !manualSauAutomat;
-        queue.add(stringRequest);
+
+    public StringRequest sendGetRequest(String url)
+    {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response)
+                    {
+                        TextView tv= (TextView)findViewById(R.id.textView);
+                        tv.setText("Succes");
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error)
+                    {
+                        TextView tv= (TextView)findViewById(R.id.textView);
+                        tv.setText("Eroare");
+                    }
+                });
+        return stringRequest;
     }
 
-    public void apasareButonUniversal(View v)
-	{
+    public void apasareButonManual(View v) {
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url;
+        if (manualSauAutomat == false) {
+            url = "http://192.168.1.126/2/on";
+        } else {
+            url = "http://192.168.1.126/2/off";
+        }
+        queue.add(sendGetRequest(url));
+        manualSauAutomat = !manualSauAutomat;
+    }
+
+    public void apasareButonUniversal(View v) {
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "";
-        switch (v.getId())
-		{
-            case (R.id.fata):
-			{
+        switch (v.getId()) {
+            case (R.id.fata): {
                 url = "http://192.168.1.126/5/on";
                 break;
             }
-            case (R.id.spate):
-			{
+            case (R.id.spate): {
                 url = "http://192.168.1.126/15/on";
                 break;
             }
-            case (R.id.stanga):
-			{
+            case (R.id.stanga): {
                 url = "http://192.168.1.126/18/on";
                 break;
             }
-            case (R.id.dreapta):
-			{
+            case (R.id.dreapta): {
                 url = "http://192.168.1.126/23/on";
                 break;
             }
-            case (R.id.sutdrept):
-			{
+            case (R.id.sutdrept): {
                 url = "http://192.168.1.126/19/on";
                 break;
             }
-            case (R.id.sutstangu):
-			{
+            case (R.id.sutstangu): {
                 url = "http://192.168.1.126/22/on";
                 break;
             }
         }
-		sendGetRequest(url);
-        queue.add(stringRequest);
+        queue.add(sendGetRequest(url));
     }
 }
