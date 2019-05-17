@@ -82,6 +82,7 @@ void loop()
 				{
 					if (currentLine.length() == 0) 
 					{
+						client.println("HTTP/1.1 200 OK");
 						for(short iterator = 0;iterator < 7;iterator++)
 						{
 							checkRequestForPin(pini[iterator]);
