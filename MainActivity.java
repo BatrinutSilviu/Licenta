@@ -17,6 +17,8 @@ import com.android.volley.toolbox.Volley;
 
 public class MainActivity extends AppCompatActivity {
 
+    final String urlPrefix="http://192.168.1.126/";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,11 +54,11 @@ public class MainActivity extends AppCompatActivity {
         Switch mySwitch = (Switch) findViewById(R.id.switch1);
         if (mySwitch.isChecked())
         {
-            url = "http://192.168.1.126/2/on";
+            url = urlPrefix + "2/on";
         }
         else
         {
-            url = "http://192.168.1.126/2/off";
+            url = urlPrefix + "2/off";
         }
         queue.add(sendGetRequest(url));
     }
@@ -66,27 +68,27 @@ public class MainActivity extends AppCompatActivity {
         String url = "";
         switch (v.getId()) {
             case (R.id.fata): {
-                url = "http://192.168.1.126/5/on";
+                url = urlPrefix + "5/on";
                 break;
             }
             case (R.id.spate): {
-                url = "http://192.168.1.126/15/on";
+                url = urlPrefix + "15/on";
                 break;
             }
             case (R.id.stanga): {
-                url = "http://192.168.1.126/18/on";
+                url = urlPrefix + "18/on";
                 break;
             }
             case (R.id.dreapta): {
-                url = "http://192.168.1.126/23/on";
+                url = urlPrefix + "23/on";
                 break;
             }
             case (R.id.sutdrept): {
-                url = "http://192.168.1.126/19/on";
+                url = urlPrefix + "19/on";
                 break;
             }
             case (R.id.sutstangu): {
-                url = "http://192.168.1.126/22/on";
+                url = urlPrefix + "22/on";
                 break;
             }
         }
