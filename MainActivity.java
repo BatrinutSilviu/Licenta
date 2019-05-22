@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
     {
         RequestQueue queue = Volley.newRequestQueue(this);
         String url;
-        Switch simpleSwitch = (Switch) findViewById(R.id.switch1);
-        if (simpleSwitch.isChecked())
+        Switch mySwitch = (Switch) findViewById(R.id.switch1);
+        if (mySwitch.isChecked())
         {
             url = "http://192.168.1.126/2/on";
         }
