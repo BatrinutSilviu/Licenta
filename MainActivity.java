@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         return stringRequest;
     }
 
-    public void toggle(View v)
+    public void toggleMode(View v)
     {
         RequestQueue queue = Volley.newRequestQueue(this);
         String url;
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         queue.add(sendGetRequest(url));
     }
 
-    public void apasareButonUniversal(View v) {
+    public void universalButon(View v) {
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "";
         switch (v.getId()) {
