@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -15,8 +16,6 @@ import com.android.volley.toolbox.Volley;
 
 
 public class MainActivity extends AppCompatActivity {
-
-    private boolean manualSauAutomat = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +31,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response)
                     {
-                        TextView tv= (TextView)findViewById(R.id.textView);
-                        tv.setText("Succes");
+
                     }
                 },
                 new Response.ErrorListener()
@@ -41,23 +39,26 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error)
                     {
-                        TextView tv= (TextView)findViewById(R.id.textView);
-                        tv.setText("Eroare");
+
                     }
                 });
         return stringRequest;
     }
 
-    public void apasareButonManual(View v) {
+    public void toggle(View v)
+    {
         RequestQueue queue = Volley.newRequestQueue(this);
         String url;
-        if (manualSauAutomat == false) {
+        Switch simpleSwitch = (Switch) findViewById(R.id.switch1);
+        if (simpleSwitch.isChecked())
+        {
             url = "http://192.168.1.126/2/on";
-        } else {
+        }
+        else
+        {
             url = "http://192.168.1.126/2/off";
         }
         queue.add(sendGetRequest(url));
-        manualSauAutomat = !manualSauAutomat;
     }
 
     public void apasareButonUniversal(View v) {
