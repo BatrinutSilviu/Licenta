@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         queue.add(sendGetRequest(url));
     }
 
-    public void universalButon(View v) {
+    public void universalButton(View v) {
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "";
         switch (v.getId()) {
