@@ -17,7 +17,7 @@ import com.android.volley.toolbox.Volley;
 
 public class MainActivity extends AppCompatActivity {
 
-    final String urlPrefix="http://192.168.1.126/";
+    private final String urlPrefix="http://192.168.1.126/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
