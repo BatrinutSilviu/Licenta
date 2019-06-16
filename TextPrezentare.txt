@@ -1,0 +1,74 @@
+1) Buna ziua, numele meu este Neamtiu Daniel, iar impreuna cu colegul meu Silviu Batrinut
+   coordonati fiind de domnul profesor Sorin Nanu, am realizat proiectul intitulat:
+   robot umanoid autonom pentru urmarirea obiectelor
+
+2) Tema proiectului consta in doua mari parti: 
+	1-realizarea unui algoritm pentru detectarea, urmarirea si lovirea unei mingi
+	2-controlul manual al robotului prin intermediu unei aplicatii mobile
+
+3) Aceasta este diagrama de ansamblu a sistemului. Arduino este creierul robotului.
+   Acesta preia comenzile de la aplicatia mobila si le pune in aplicare si totodata
+   ruleaza si algoritmul de detectie si cel decizional. Colegul meu s-a ocupat de 
+   aplicatia mobila si de comunicatia cu aceasta si totodata a realizat miscarile
+   de intoarcere, iar eu am realizat prelucrarea datelor primite de la esp-32, de al
+   camera pixy, algoritmul de detectie pe baza acestora si pasitul in fata/spate si
+   sutul
+
+4) Functiile sistemului sunt impartite in doua ramuri
+	1-modul autonom care are ca sub-functii: detectarea obiectului, deplasarea catre
+	  acesta si lovirea mingii
+	2-motul comandat manula care are capacitatea de a reproduce toate miscarile
+	  robotului
+
+5) Echipamentele hardware utilizate au fost:
+	Arduino - folosit pentru prelucrarea datelor primite de la pixy si aplicatia
+                  mobila, rularea algoritmilor de detectie si decizie
+	Pixy - pentru procesarea imaginii
+	SSC-32 - controlul motoarelor
+
+6)	ESP-32 - interfatarea dintre aplicatia mobila si arduino
+	Motoarele - controlul membrelor robotului
+	sursa de tensiune - alimentarea motoarelor si a placi SSC-32
+	PC - programarea algoritmilor si rularea programelor auxiliare
+
+7) Tehnologiile software utilizate sunt:
+	Arduino UNO - utilizat pentru programarea algoritmilor, limbajele de programare
+	              folosite fiind C/C++
+	PixyMon - pentru vizualizarea imaginii de la camera Pixy si setarea semnaturii
+	LynxTerm - pentru testarea motoarelor
+	GitHub - versionarea codului si stocarea documentelor
+
+8) Aplicatia este impartita in cele doua ramuri
+	1-modul comandat manual care proceseaza comenzile primite de la aplicatie si
+	  executa comenzile
+
+9)	2-modul autonom care realizeaza detectia obiectului si ia decizii pe baza
+	  pozitiei sale in imagine:
+		- imaginea e impartita in 3 cadrane pe axa x. Daca obiectul se afla in
+		  in cele doua cadrane laterale atunci robotul va face o intoarcere
+		  stanga sau dreapta, dupa caz, iar daca obiectul se afla in cadranul
+		  din mijloc, se verifica daca obiectul este in partea de jos a imaginii
+		  iar in acest caz daca e pozitionat spre stanga va executa o miscare de
+		  sut cu piciorul stang, in caz contrar, va suta cu piciorul drept. Daca
+		  obiectul nu se afla in partea de jos, atunci robotul se va realiza
+		  un pas in fata
+
+10)	3-miscarile implementate de mine sunt cele de deplasare in fata, in spate si
+	  lovirea mingii
+
+11) Problemele intampinate au fost:
+	1-legate de diferenta de intensitate luminoasa de lamomentul in care semnatura
+	  culorii a fost setata si momentul in care ruleaza
+	2-initial am dorit sa realizam un mod de a pasi cat mai similar cu cel uman, dar
+	  din cauza ca membrele robotului au o constructie diferita fata de cea umana
+	  acesta avea probleme mari de echilibru
+	3-frecarea cu suprafata
+	4-interconectarea modulelor
+
+12) 
+
+13) Consider ca proiectul a fost unul antrenant si interesant, care ne-a permis sa punem
+    in practica lucrurile invatate in timpul facultatii si care a ajutat totodata la
+    dezvoltarea noastra personala. Datorita faptului ca am realizat acest proiect
+    impreuna cu colegul meu, pot sa spun ca ne-a ajutat sa ne dezvoltam si aptitudinile
+    de lucru in echipa.
